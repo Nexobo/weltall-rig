@@ -1,0 +1,18 @@
+{
+  "name": "weltall-rig",
+  "version": "0.1.0",
+  "description": "Build an editable Weltall Blender rig from your Xenogears Disc 1 image.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "release:windows": "node tools/package-release.mjs"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "4.4.2",
+    "@gltf-transform/extensions": "4.4.2",
+    "pngjs": "7.0.0"
+  }
+}

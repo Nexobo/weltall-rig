@@ -1,0 +1,134 @@
+{
+  "repository": "xenogears-map-viewer-mern",
+  "purpose": "Frozen disc reader and Weltall resource decoder dependencies; no server runtime dependency.",
+  "files": [
+    {
+      "path": "server/src/content-build/audio-decoders.js",
+      "sha256": "025907076c15efc0050f0f1b315d522ee765de473a944968c59a979169252166"
+    },
+    {
+      "path": "server/src/content-build/battle-mecha-auxiliary-contract.js",
+      "sha256": "2334dcfd1532405140d56e6c1e245cfc0019a2fe1eddc9650022ba8d0117610b"
+    },
+    {
+      "path": "server/src/content-build/battle-mecha-auxiliary-resources.js",
+      "sha256": "32e41d475727f018be93385fba1a921b2a8451cb34df1d9d01720c7374c9c695"
+    },
+    {
+      "path": "server/src/content-build/battle-mecha-auxiliary-sprites.js",
+      "sha256": "b812185c8f3649b389badc478fef87294c7b31eab2f54edf4f3b56b3afd78255"
+    },
+    {
+      "path": "server/src/content-build/battle-mecha-resources.js",
+      "sha256": "41d54f4936cffd2d670c02f5ababa6c85f74438c5a3ea63af6e5cc097475cccd"
+    },
+    {
+      "path": "server/src/content-build/battle-polygon-shatter-contract.js",
+      "sha256": "e2a3203e4fa4464312dd6ed881a3498a593f4df7ab23118dab2cf7666bdade7f"
+    },
+    {
+      "path": "server/src/content-build/battle-screen-effect-parameters.js",
+      "sha256": "ee3cb005a3d970b2f1d7862c35c39dbc0acb3eaa6e7e05c4c23fe8300666af23"
+    },
+    {
+      "path": "server/src/content-build/battle-sprite-variable-banks.js",
+      "sha256": "d830f3f562b7e5dde2fbc77e3d181c6e22f6580b0ea25b6b6d25cdd176f02a4f"
+    },
+    {
+      "path": "server/src/content-build/battle-tmd-decoder.js",
+      "sha256": "3df99ae4d598a3fa866859b1236b37832e5988dda0a292c869b656c7b6a36953"
+    },
+    {
+      "path": "server/src/content-build/battle-tmd-textures.js",
+      "sha256": "45ae9a5cee31f80cd90a17a62b150f033c1f090b22d760fe77d990a206f788d3"
+    },
+    {
+      "path": "server/src/content-build/scene-model-program-compiler.js",
+      "sha256": "66746c1c99348e91041435e465293be85879296a92ae2721a372ee4265a3c8f5"
+    },
+    {
+      "path": "server/src/content-build/source-input.js",
+      "sha256": "fa9acb1d410b6e41ba13ce74e8a357277f1216d103fb8d70e0921c8250499e90"
+    },
+    {
+      "path": "server/src/content-build/sprite-program-compiler.js",
+      "sha256": "2d9612eb04a95d00198b8663fde5a9135b33cc02f03c2fb41d7fa7540dd398f1"
+    },
+    {
+      "path": "server/src/xeno/binary-reader.js",
+      "sha256": "29a27d7e89ee78af0fe41f75c8f631e448b5ceb7aae01e45cfbc31072ee5dade"
+    },
+    {
+      "path": "server/src/xeno/disc-catalog.js",
+      "sha256": "750bb4064b78527b092150109f028640b1dadbbc937023dd9c4d086ed9896afa"
+    },
+    {
+      "path": "server/src/xeno/disc-equivalence.js",
+      "sha256": "c4c3aa4fff75a2735ef1471826fc310a0f57d3be16c85d6ca17c870a0fb2a210"
+    },
+    {
+      "path": "server/src/xeno/disc-index.js",
+      "sha256": "73aaa319783638f5334790a904bd60dc3770afc8ea639596a99d2063ddaca37b"
+    },
+    {
+      "path": "server/src/xeno/field-model.js",
+      "sha256": "038be6c4cc29c02fd74965de779a4ff1210fbf84bb887316b68bedfc17d559fe"
+    },
+    {
+      "path": "server/src/xeno/lzs.js",
+      "sha256": "40cfe39ca4871b8a2001831304df46f35fa6d2aa261a97b87656d32129fe4a80"
+    },
+    {
+      "path": "server/src/xeno/normalize.js",
+      "sha256": "60d07103bb3fc8adf08d7b9faf13d3db8ab49374b6e73e138765bd79ea9cdd8b"
+    },
+    {
+      "path": "server/src/xeno/scene-model-animation.js",
+      "sha256": "df919e7f9d7a002dd2e3df4c36cd6fa36919b0f14f11727a517b8140ae74c420"
+    },
+    {
+      "path": "server/src/xeno/scene-model-metrics.js",
+      "sha256": "70b7dac1b01dbf6806d9da0c8335589b592c512beb9abfdf0310fdb423513251"
+    },
+    {
+      "path": "server/src/xeno/scene-model.js",
+      "sha256": "878ce1b1a23371e1004011c227e4b25f5e229195dfade7c75c50c535146dafba"
+    },
+    {
+      "path": "server/src/xeno/source-workspace.js",
+      "sha256": "aea8f1c2c9574a1bf5168478de4fffd5e62b65f6ef0bacc4c464829c756836ef"
+    },
+    {
+      "path": "server/src/xeno/sprite-animation.js",
+      "sha256": "9aa638b8ac6da91e4389a5c0e78c8a11146361520dd60fb67629cae19a8760b9"
+    },
+    {
+      "path": "server/src/xeno/sprite-bundle.js",
+      "sha256": "feae9f6e35d93be750ba079cfb204bdb2f60ba5aca58cbe0cd43c1f5ddfe7c99"
+    },
+    {
+      "path": "server/src/xeno/sprite-frame.js",
+      "sha256": "4513e23956cb56e7c593bbd499050a7fdc3c161dcd83ab1c5bf951a79ca18526"
+    },
+    {
+      "path": "server/src/xeno/sprite-resources.js",
+      "sha256": "f802cfbbedf48b26072c73116ac2439df84405acaff5ea8be28769d7b06e60bf"
+    },
+    {
+      "path": "shared/content/content-schema.js",
+      "sha256": "08c1591d3b7f86d4a3793fd0c66961f0f00d7f7d9710852a98cd59dcc9f80055"
+    },
+    {
+      "path": "shared/runtime/binary-reader.js",
+      "sha256": "697bc4da0c868ddf4a4221ded8d48b791f7ae9826a78310f3e56ae7ebb2e761b"
+    },
+    {
+      "path": "shared/runtime/scene-model-animation.js",
+      "sha256": "0b55b92fc2af75cd750002d4d60eb087e5b14de465158a9bc7ebaa98c52e20d3"
+    },
+    {
+      "path": "shared/runtime/sprite-animation.js",
+      "sha256": "b4487828dcbe48dfda3da214a6f9ae565ce1e57821c3dd80f978c9bd41f37bbc"
+    }
+  ]
+}

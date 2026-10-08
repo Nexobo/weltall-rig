@@ -1,0 +1,40 @@
+{
+  "capturedAt": "2026-09-18T19:14:37.823Z",
+  "files": [
+    {
+      "path": "shared/runtime/battle-mecha-pose.js",
+      "sha256": "1dbfa51685576ebce82f27eb156f18a14ee9d110f2c62e6b62cd3235e9992cb2"
+    },
+    {
+      "path": "shared/runtime/battle-model-owner.js",
+      "sha256": "f25b6c1a51d6836a2796c8a7dc080b961746e4f738a00741df5e5c028b7abaf2"
+    },
+    {
+      "path": "shared/runtime/battle-model-strands.js",
+      "sha256": "87081bf82f70df466232146c13b6ac93ef88e038450cbe522ae827829251130e"
+    },
+    {
+      "path": "shared/runtime/battle-model-texture-copies.js",
+      "sha256": "f8822aade6b702eae66062aff0613a584fffa73b71bc5d8a9c21816c663097b8"
+    },
+    {
+      "path": "shared/runtime/binary-reader.js",
+      "sha256": "697bc4da0c868ddf4a4221ded8d48b791f7ae9826a78310f3e56ae7ebb2e761b"
+    },
+    {
+      "path": "shared/runtime/opening-battle-animation.js",
+      "sha256": "7062b08fdc60886082e49e86c8f0c356b3ae1027f77473d9a8065f15cb1baab3"
+    },
+    {
+      "path": "shared/runtime/opening-battle-camera.js",
+      "sha256": "9c8791c7d141c501e412f69ebba867ee6606a80fea360ea1666fed54dc9dcb69"
+    },
+    {
+      "path": "shared/runtime/scene-model-animation.js",
+      "sha256": "0b55b92fc2af75cd750002d4d60eb087e5b14de465158a9bc7ebaa98c52e20d3"
+    }
+  ],
+  "localChanges": [
+    "opening-battle-animation.js: standalone reference inspection/preparation methods; opcode38 is a checked no-op only when no attachment exists. Original server sources are untouched."
+  ]
+}

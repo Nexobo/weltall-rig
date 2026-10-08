@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weltall Rig — animator guide</title>
+<style>
+  :root { color-scheme: light; --ink:#202932; --muted:#52616e; --line:#d9e0e5; --blue:#135d91; }
+  * { box-sizing:border-box; }
+  body { margin:0; color:var(--ink); background:#f4f6f8; font:16px/1.6 system-ui,sans-serif; }
+  main { max-width:920px; margin:36px auto; padding:38px 48px; background:white; border:1px solid var(--line); border-radius:10px; }
+  header { border-bottom:2px solid var(--ink); padding-bottom:22px; margin-bottom:24px; }
+  h1 { font-size:2.1rem; line-height:1.15; margin:0 0 12px; }
+  h2 { font-size:1.35rem; margin:34px 0 12px; scroll-margin-top:20px; }
+  h3 { font-size:1.05rem; margin:22px 0 8px; }
+  p { margin:10px 0; }
+  a { color:var(--blue); }
+  nav { display:flex; gap:8px 18px; flex-wrap:wrap; }
+  nav a { text-decoration:none; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .note { padding:12px 16px; background:#edf4f9; border-left:3px solid var(--blue); margin:18px 0; }
+  li { margin:6px 0; }
+  code,kbd { font: .9em ui-monospace,Consolas,monospace; background:#eef1f4; padding:2px 5px; border-radius:3px; }
+  kbd { border:1px solid var(--line); white-space:nowrap; }
+  pre { padding:16px; overflow:auto; background:#eef1f4; border-radius:5px; font: .85rem/1.5 ui-monospace,Consolas,monospace; white-space:pre-wrap; overflow-wrap:anywhere; }
+  pre code { padding:0; background:none; font:inherit; }
+  table { width:100%; border-collapse:collapse; font-size:.92rem; margin:16px 0; }
+  th,td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--line); }
+  th { background:#edf1f4; }
+  footer { color:var(--muted); font-size:.88rem; margin-top:34px; border-top:1px solid var(--line); padding-top:14px; }
+  @media(max-width:700px) { main { margin:0; padding:24px 18px; border:0; border-radius:0; } h1 { font-size:1.8rem; } table { font-size:.84rem; } th,td { padding:8px 5px; } }
+  @media print { body { background:white; font-size:10pt; } main { max-width:none; margin:0; padding:0; border:0; } nav { display:none; } a { color:inherit; } h2,h3 { break-after:avoid; } tr,pre,.note { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Weltall Rig</h1>
+  <p>An editable original model with pixel textures, reference animation, and animator controls.</p>
+  <p class="meta">Blender 5.0 · 67 controls · 51 native joints · 91 reference actions / 120 source clips · 7 demos</p>
+</header>
+<nav aria-label="Guide contents">
+  <a href="#start">Start</a><a href="#controls">Controls</a><a href="#contacts">Contacts</a>
+  <a href="#follow">Follow spaces</a><a href="#actions">Edit animation</a><a href="#reset">Reset and demos</a>
+  <a href="#mesh">Edit the model</a><a href="#import">Import edits</a><a href="#coverage">Coverage</a>
+</nav>
+
+<section id="start">
+<h2>1. Open the file and enable the sidebar</h2>
+<ol>
+  <li>Open <code>weltall-rigged.blend</code> in Blender 5.0.</li>
+  <li>Open the <strong>Scripting</strong> workspace. In the Text Editor's text dropdown, select <strong>RIG CONTROLS - Run Script</strong>.</li>
+  <li>Hover over the Text Editor and press <kbd>Alt+P</kbd>, or click <strong>Run Script ▶</strong>.</li>
+  <li>Return to <strong>Layout</strong>, select the rig, and enter <strong>Pose Mode</strong>.</li>
+  <li>Press <kbd>N</kbd> in the 3D viewport and open the <strong>Weltall Rig</strong> tab.</li>
+</ol>
+<p>Run the script once each time you reopen Blender. It registers the sidebar and dynamic keying sets; no add-on or automatic execution is required. Bone Properties custom properties remain available without it. The blend also contains this information in <strong>WELTALL ANIMATION GUIDE</strong>.</p>
+<p>Frame 1 is the original neutral model. The <strong>Reference animations</strong> NLA track plays the unique source actions back-to-back from frame 31 at 30 fps. The Action Editor also lists them individually. Textures are packed into the blend and use nearest sampling.</p>
+</section>
+
+<section id="controls">
+<h2>2. Pose with FK, IK, and body controls</h2>
+<p>Blue controls are left, red are right, and gold are central. Select controls in Pose Mode. Use <kbd>G</kbd> for an editable translation and <kbd>R</kbd> for an editable rotation. Scale and inappropriate transform channels are locked. The original rigid parts retain fixed limb lengths.</p>
+<table>
+<thead><tr><th>Control</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td><code>CTRL-root</code></td><td>Place and turn the entire character.</td></tr>
+<tr><td><code>CTRL-body</code></td><td>Shift whole-body weight. Root/world IK goals can stay planted.</td></tr>
+<tr><td><code>CTRL-pelvis</code></td><td>Move the legs and skirt independently of the upper torso.</td></tr>
+<tr><td><code>CTRL-chest_pose</code></td><td>Turn shoulders, torso shell, head, and wings together.</td></tr>
+<tr><td>FK limb rings</td><td>Rotate individual upper arms, forearms, thighs, shins, wrists, and ankles.</td></tr>
+<tr><td>Wrist/foot boxes</td><td>Move/rotate an IK goal and set its <code>ik_blend</code>.</td></tr>
+<tr><td>Elbow/knee diamonds</td><td>Move a pole to choose limb bend direction.</td></tr>
+<tr><td>Foot/toe, armor, skirt, wing controls</td><td>Pose separate rigid details. Foot/toe controls follow the evaluated ankle.</td></tr>
+</tbody>
+</table>
+<p>The legacy <code>CTRL-hips</code> is the <strong>torso base</strong>; it does not carry the leg sockets. Legacy <code>CTRL-chest</code> is the <strong>shoulder girdle</strong>. Their original names and source curves are preserved; the sidebar labels their actual roles.</p>
+<h3>Use IK</h3>
+<ol>
+  <li>Work on a copied reference action or a new action; mute competing reference playback when posing a new action.</li>
+  <li>Place the wrist/foot IK target and its elbow/knee pole.</li>
+  <li>On that wrist/foot, move <strong>FK / IK</strong> from <strong>0</strong> toward <strong>1</strong>.</li>
+  <li>Key the active limb channels using the sidebar's Key button or a Weltall keying set.</li>
+</ol>
+<p>Zero is FK; one is IK; intermediate values blend smoothly. Reference actions begin entirely in FK and do not animate IK targets, poles, or blends. There is no automatic matching or snap button: the IK pose is the pose you set. Avoid sweeping a pole through a fully straight limb; beyond full reach the chain clamps instead of stretching.</p>
+<p>Each wrist has <strong>Hand</strong>: <strong>0 open</strong>, <strong>1 closed</strong>, <strong>2 both</strong>, <strong>3 hidden</strong>. Rest/reset is <strong>2</strong>, preserving the original extracted visibility. Key the hand state to animate a swap.</p>
+</section>
+
+<section id="contacts">
+<h2>3. Use foot and hand contacts</h2>
+<p>Contact controls start at zero and operate through that limb's IK blend. Use local axes. Forward is negative Y.</p>
+<table>
+<thead><tr><th>Control, per side</th><th>Motion</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td><code>heel_contact</code></td><td>Local X pitch; Z swivel</td><td>Rotate around the heel, lifting or turning the forefoot.</td></tr>
+<tr><td><code>ball_contact</code></td><td>Local X</td><td>Raise the heel while keeping the toe planted.</td></tr>
+<tr><td><code>toe_contact</code></td><td>Local X pitch; Z swivel</td><td>Roll over the toe tip or turn the heel around it.</td></tr>
+<tr><td><code>bank_contact</code></td><td>Local Y</td><td>Rock on the positive or negative sole edge.</td></tr>
+<tr><td><code>wrist_pivot</code></td><td>Translation</td><td>Place a palm/knuckle pivot; moving it alone leaves the hand still.</td></tr>
+<tr><td><code>hand_contact</code></td><td>Rotation</td><td>Rotate the hand around that pivot for bracing or striking.</td></tr>
+</tbody>
+</table>
+<p>Full names use <code>CTRL-</code> and <code>.L</code>/<code>.R</code>, for example <code>CTRL-heel_contact.L</code>. Native foot/toe FK controls remain available for individual pieces. Head, knee/thigh armor, and skirt also retain their permitted sliding channels for clearance.</p>
+</section>
+
+<section id="follow">
+<h2>4. Choose what a control follows</h2>
+<table>
+<thead><tr><th>Control</th><th>Spaces</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Wrist/foot IK targets</td><td>Root / Body / World</td><td>Root</td></tr>
+<tr><td>Elbow/knee poles</td><td>Root / Body / Goal</td><td>Root</td></tr>
+<tr><td>Head orientation</td><td>Torso / Root / World</td><td>Torso</td></tr>
+</tbody>
+</table>
+<p>Root carries a control with character placement; Body carries it with the body; World keeps it fixed when root/body move. Goal makes a pole travel with its IK target. Head position always follows the torso; only its orientation changes space.</p>
+<p>Use <strong>Change Follow (Keep Pose)</strong> in the sidebar. It compensates the control so the current evaluated pose stays in place. It keys the previous pose/space one frame earlier and the compensated pose/new space now, with stepped follow keys. This also works in NLA Tweak Mode.</p>
+<div class="note"><strong>A follow button writes animation keys even with Auto Key off.</strong> Use it on your working action. Editing the raw <code>follow</code> property does not compensate the pose. Follow changes are separate from the FK/IK blend.</div>
+</section>
+
+<section id="actions">
+<h2>5. Edit a reference action without losing it</h2>
+<ol>
+  <li>In the NLA Editor, select the source strip. Duplicate it with <kbd>Shift+D</kbd> and move the copy onto a separate working track.</li>
+  <li>Make the copied strip's action single-user with <strong>Edit → Make Single User</strong> (<kbd>U</kbd>), then rename it.</li>
+  <li>Select the copied strip and press <kbd>Tab</kbd> in the NLA Editor to enter Tweak Mode. Edit its action in the Action Editor.</li>
+  <li>Press <kbd>Tab</kbd> in the NLA Editor to leave Tweak Mode. Keep the original Reference animations track intact and mute competing tracks as needed.</li>
+</ol>
+<p>For fresh animation, mute Reference animations and create a new Action in the Action Editor. Name it and enable its shield/Fake User if it has no NLA strip.</p>
+<h3>Select, key, and use pose tools</h3>
+<p>Use the sidebar Select buttons or the six saved selection sets in Armature Data Properties: Whole Body, Body, Arm L/R, and Leg L/R. Seven dynamic keying sets add Selected. The sidebar Key buttons and keying sets include active FK channels at blend 0, active IK at blend 1, both between them, and relevant hand/blend/follow properties. Selecting only a detail control keys only that control.</p>
+<p>Blender's Copy Pose, Paste Pose, Paste Flipped Pose, and X-axis mirroring work with the controls. Breakdown, Push/Relax, and Blend to Neighbor need surrounding keys on the working action. Keep source controls in quaternion rotation mode; converting them changes interpolation. Added contact and offset controls use Euler rotation.</p>
+<p>Key channels an action should own. Import resets animation-controlled channels to recorded neutral values between independent actions, preventing a saved pose in one clip from contaminating another. Unkeyed manual offsets remain shared across actions until keyed.</p>
+</section>
+
+<section id="reset">
+<h2>6. Reset and explore the demonstrations</h2>
+<p>The Asset Browser's <strong>Current File</strong> library contains five partial neutral poses: Body, Arm L, Arm R, Leg L, and Leg R. Select the controls to affect, then apply or blend the asset. Apply Pose Flipped uses corresponding <code>.L</code>/<code>.R</code> names. Body Neutral preserves global root placement. Create your own partial pose assets with <strong>Pose → Pose Library → Create Pose Asset</strong>.</p>
+<p><kbd>Alt+G</kbd> and <kbd>Alt+R</kbd> clear editable translation and rotation. <kbd>Backspace</kbd> over a custom property restores its default. <strong>Clear Transforms alone does not reset hand, blend, or follow properties.</strong></p>
+<h3>Switch actions cleanly</h3>
+<ol>
+  <li>Leave NLA Tweak Mode and turn Auto Key off.</li>
+  <li>Mute Reference animations and clear the active Action with its <strong>X</strong> in the Action Editor.</li>
+  <li>In Pose Mode, select Whole Body and fully apply all five Current File neutral assets.</li>
+  <li>Select <code>CTRL-root</code> and press <kbd>Alt+G</kbd>, then <kbd>Alt+R</kbd>.</li>
+  <li>Choose the next demo/action. To return to references, leave the Action empty, unmute Reference animations, and scrub to the desired frame.</li>
+</ol>
+<p>Seven separate 61-frame <code>DEMO/</code> actions demonstrate <strong>Walk contacts</strong>, <strong>Weight transfer</strong>, <strong>Crouch</strong>, <strong>Landing</strong>, <strong>Punch</strong>, <strong>Bracing</strong>, and <strong>Follow and blend</strong>. They are editable contact studies, not original game motion. The 91 reference actions remain separate.</p>
+</section>
+
+<section id="mesh">
+<h2>7. Reshape the model</h2>
+<p>Return to frame 1 and reset to neutral before mesh editing. Select an original mesh object and edit its vertices or UVs in Edit Mode. Coincident triangle vertices are joined for editing while preserving UV corners and authored normals. Materials keep the original packed pixel textures.</p>
+<p>Keep original object names, parenting, origins, transforms, and material assignments. Do not join separate original objects, apply the rig's constraints, or rename native joints. Save a separate edited blend so the generated original remains available.</p>
+</section>
+
+<section id="import">
+<h2>8. Bake edits into the local model package</h2>
+<p>Keep the build's <code>original/weltall</code> folder. From the extracted release directory, run:</p>
+<pre><code>.\weltall-rig.cmd import "D:\Weltall\weltall-edited.blend" --blender "C:\Program Files\Blender Foundation\Blender 5.0\blender.exe" --original "D:\Weltall\original\weltall" --out "D:\Weltall-edited"</code></pre>
+<p>Choose a new output folder. Source users can replace <code>.\weltall-rig.cmd</code> with <code>node cli.mjs</code>. Import bakes the evaluated rig, including IK/contact motion and hand visibility, onto the original 51-joint hierarchy. Authoring controls and neutral pose assets are omitted from animation output.</p>
+<div class="note">The output is an edited local GLB/model package. This tool does not insert models into the game, patch a disc, or write the original game BIN format.</div>
+</section>
+
+<section id="coverage">
+<h2>9. Know the source coverage</h2>
+<p>The audited original Weltall library contains 91 unique actions with 120 scene/battle source aliases. The blend's <strong>SOURCE ANIMATION COVERAGE</strong> text and <code>rig-report.json</code> record the aliases and timeline. Weltall-2, Xenogears, and Id are outside this release.</p>
+<ul>
+  <li>Scene08 motion is mapped onto the canonical battle skeleton using the audited source mapping.</li>
+  <li><code>Scene01_21</code> remains <strong>PARTIAL</strong>: source keyframe 44 is absent.</li>
+  <li>Battle animation uses a fixed neutral capture context. Cameras, sound, particles, and context-dependent battle effects are not part of this model animation.</li>
+</ul>
+<p>The original mesh, hierarchy, and textures remain the basis of the export; the rig does not recreate missing source motion.</p>
+</section>
+
+<footer>
+<p>The tool's original code is MIT-licensed. Extracted game assets retain their respective owners' rights; the tool license grants no rights to those assets. The public release contains no disc image or extracted game assets.</p>
+<p>This guide is self-contained and works offline. Use your browser's Print command to save a PDF.</p>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "repository": "xenogears-map-viewer-mern",
+  "capturedAt": "2026-09-18T17:07:23.049Z",
+  "files": [
+    {
+      "path": "server/src/xeno/scene-model.js",
+      "sha256": "878ce1b1a23371e1004011c227e4b25f5e229195dfade7c75c50c535146dafba"
+    },
+    {
+      "path": "server/src/xeno/binary-reader.js",
+      "sha256": "29a27d7e89ee78af0fe41f75c8f631e448b5ceb7aae01e45cfbc31072ee5dade"
+    },
+    {
+      "path": "shared/runtime/binary-reader.js",
+      "sha256": "697bc4da0c868ddf4a4221ded8d48b791f7ae9826a78310f3e56ae7ebb2e761b"
+    },
+    {
+      "path": "server/src/xeno/field-model.js",
+      "sha256": "038be6c4cc29c02fd74965de779a4ff1210fbf84bb887316b68bedfc17d559fe"
+    },
+    {
+      "path": "server/src/xeno/normalize.js",
+      "sha256": "60d07103bb3fc8adf08d7b9faf13d3db8ab49374b6e73e138765bd79ea9cdd8b"
+    },
+    {
+      "path": "server/src/xeno/scene-model-animation.js",
+      "sha256": "df919e7f9d7a002dd2e3df4c36cd6fa36919b0f14f11727a517b8140ae74c420"
+    },
+    {
+      "path": "shared/runtime/scene-model-animation.js",
+      "sha256": "0b55b92fc2af75cd750002d4d60eb087e5b14de465158a9bc7ebaa98c52e20d3"
+    },
+    {
+      "path": "server/src/xeno/scene-model-metrics.js",
+      "sha256": "70b7dac1b01dbf6806d9da0c8335589b592c512beb9abfdf0310fdb423513251"
+    },
+    {
+      "path": "server/src/xeno/scene-model-glb.js",
+      "sha256": "cd5663d18c5f469bc3ca809bd711478662fb7e360ea3717b3b5fffc7d5cfc16c"
+    }
+  ],
+  "dependencies": {
+    "@gltf-transform/core": "4.4.2",
+    "@gltf-transform/extensions": "4.4.2",
+    "pngjs": "7.0.0",
+    "property-graph": "4.1.0",
+    "ktx-parse": "1.1.0"
+  }
+}
